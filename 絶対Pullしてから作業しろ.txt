@@ -1,0 +1,20 @@
+・mainブランチ
+    → Pullされる用ブランチ
+・roppongi_workブランチ
+    → 職業訓練校で作業したものをPushする用ブランチ
+・home_workブランチ
+    → お家で作業したものをPushする用ブランチ
+
+！職業訓練校で作業した場合
+    1. ブランチをroppongiに変更する
+    2. mainからPullする
+    3. 作業をする
+    4. Commit → Pushする
+    5. ブランチをmainに変えて、roppongiをマージする
+
+！お家で作業した場合
+    1. ブランチをhomeに変更する
+    2. mainからPullする
+    3. 作業をする
+    4. Commit → Pushする
+    5. ブランチをmainに変えて、homeをマージする
