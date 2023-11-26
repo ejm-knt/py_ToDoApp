@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        <input type="text" name="textTest">
+        <input type="submit" value="追加">
+
+        <select name="pjList">
+            {% for i in pjList %}
+                <option> {{ i }} </option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <div>
+        {% for test in test %}
+            {{ test }}
+        {% endfor %}
+    </div>
+</body>
+</html>
