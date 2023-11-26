@@ -8,27 +8,43 @@
 <body>
     <h1>ToDoアプリ</h1>
     <form method="POST">
-        <input type="text" name="task" required>
-        <input type="submit" value="追加">
-    </form>
-    <form method="POST">
-        <input type="submit" name="add" value="Add">
-        <input type="submit" name="remove" value="Remove">
+        <h2>プロジェクト追加/削除欄</h2>
+        <div>
+            <input type="text" />
+            <input type="submit" name="add" value="pjAdd" required>
+        </div>
+
+        <div>
+            <select name="pjList">
+                {% for pjL in projectList %}
+                    <option> {{ pjL }} </option>
+                {% endfor %}
+            </select>
+            <input type="submit" name="remove" value="pjRemove">
+        </div>
     </form>
 
+    <h2>タスク追加</h2>
     {% for i in range(count) %}
-    <table border="1" id = "{{i}}">
-        <tr>
-            <th>タスク</th>
-            <th>日付</th>
-        </tr>
-        {% for task in tasks %}
+    <span>
+        <form method="POST">
+            <input type="text" name="task" required>
+            <input type="submit" value="追加">
+        </form>
+
+        <table border="1" id = "{{i}}">
             <tr>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date }}</td>
+                <th>タスク</th>
+                <th>日付</th>
             </tr>
-        {% endfor %}
-    </table>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.content }}</td>
+                    <td>{{ task.date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </span>
     {% endfor %}
 </body>
 </html>
