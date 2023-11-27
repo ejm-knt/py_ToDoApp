@@ -24,14 +24,14 @@ def index():
 
         # 'Remove'ボタンが押され、かつカウントが0より大きい場合
         if request.form.get('remove') == 'pjRemove':
-            removed_value = d.pop('k1')
-            print(d)
+            # removed_value = d.pop('k1')
+            # print(d)
             # {'k2': 2, 'k3': 3}
-
+            print("a")
         # tasksAddが送信された場合
         if request.form.get('newPjName'):
             content = request.form.get('newPjName')  # タスクの内容を取得
-            tasks.append(Task(content, date))  # タスクをリストに追加
+            # tasks.append(Task(content, date))  # タスクをリストに追加
 
 
     # index.htmlをレンダリングしてレスポンスを返す
