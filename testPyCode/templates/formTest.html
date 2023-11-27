@@ -6,21 +6,44 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST">
-        <input type="text" name="textTest">
-        <input type="submit" value="追加">
+    <h1>ToDoリスト</h1>
 
-        <select name="pjList">
-            {% for i in pjList %}
+    <h2>pj追加/削除欄</h2>
+    
+    <!--! pj新規追加欄  -->
+    <form method="POST">
+        <span>新規プロジェクト名：</span>
+        <input type="text" name="PjAdd">
+        <input type="submit" name="pjAddButton" value="pj追加">
+    </form>
+    
+    <!--! 既存pj削除欄  -->
+    <form method="POST">
+        <span>削除プロジェクト名：</span>
+        <select name="pjRemove">
+            {% for i in pjmDict %}
                 <option> {{ i }} </option>
             {% endfor %}
         </select>
+        <input type="submit" name="pjRemoveButton" value="pj削除">
     </form>
 
-    <div>
-        {% for test in test %}
-            {{ test }}
-        {% endfor %}
-    </div>
+    <h2>task追加/削除欄</h2>
+    <!--! task新規追加欄  -->
+    <form method="POST">
+        <span>追加タスク内容：</span><input type="text" name="contents"><br>
+        <span>期日：</span><input type="text" name="deadLine"><br>
+        <span>担当者：</span><input type="text" name="maneger"><br>
+        <input type="submit" name="taskAddButton" value="task追加"><br>
+    </form>
+
+    <br>
+
+    <!--! 既存task削除欄  -->
+    <form method="POST">
+        <span>削除するtask番号：</span><input type="number" name="taskListNum" pattern="^[0-9]+$">
+        <input type="submit" name="taskAddButton" value="task削除">
+    </form>
+    
 </body>
 </html>
