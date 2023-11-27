@@ -20,7 +20,7 @@ def index():
         # pjAddが送信された場合
         if request.form.get('pjAdd'):
             request.form.get('pjAdd') == 'createPJ'
-            pjm.add_project(request.form.get('newPjName'))
+            pjm.addProject(request.form.get('newPjName'))
 
         # 'Remove'ボタンが押され、かつカウントが0より大きい場合
         if request.form.get('remove') == 'pjRemove':

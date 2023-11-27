@@ -3,7 +3,7 @@ class ProjectManager:
         self.projects = {}  # 各プロジェクトを格納するディクショナリ
 
     # プロジェクトを追加する
-    def add_project(self, name):
+    def addProject(self, name):
         if not (name in self.projects) :
             self.projects[name] = []
         else:
