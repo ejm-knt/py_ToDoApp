@@ -31,12 +31,15 @@ class ProjectManager:
         else:
             print(f"プロジェクト {project_name} は存在しません。")
 
-    # # タスクを削除する
-    # def remove_task(self, project_name, task, index):
-    #     if project_name in self.projects and :
-            
-    #     else:
-    #         print(f"プロジェクト {project_name} は存在しません。")
+    # タスクを削除する
+    def remove_task(self, project_name, index):
+        if project_name in self.projects:
+            try:
+                self.projects[project_name].pop(index)
+            except IndexError:
+                print(f"プロジェクト {project_name} にはインデックス {index} のタスクは存在しません。")
+        else:
+            print(f"プロジェクト {project_name} は存在しません。")
 
     # プロジェクトとそのタスクを表示する
     def display_projects(self):
