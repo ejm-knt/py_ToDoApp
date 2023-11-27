@@ -51,16 +51,34 @@ pm = ProjectManager()
 
 # プロジェクトとタスクを追加
 
-# while True:
-#     input("1:pjAdd 2:pjDel 3:taskAdd 4:taskDel")
-pm.add_project("pj1")
-pm.add_task("pj1", Task("task1", "2023-11-26"))
+while True:
+    selectMode = int(input("0:DictView 1:pjAdd 2:pjDel 3:taskAdd 4:taskDel 5:end >> "))
 
-pm.add_project("pj2")
-pm.add_task("pj2", Task("task1", "2023-11-27"))
-pm.add_task("pj2", Task("task2", "2023-11-28"))
+    if selectMode == 0:
+        pm.display_projects()
 
-# 結果を表示
-pm.display_projects()
+    elif selectMode == 1:
+        # pm.add_project("pj1")
+        pm.add_project(input("addするpj名を入力 >> "))
 
-print(pm.projects["pj1"])
+    elif selectMode == 2:
+        pm.remove_project(input("removeするpj名を入力 >> "))
+
+    elif selectMode == 3:
+        pjName = input("追加したいpj名を入力 >> ")
+        addContent = input("追加したいtask内容を入力 >> ")
+        addDate = input("追加したtimeを入力 >> ")
+        task = Task(addContent,addDate)
+        pm.add_task(pjName, task)
+
+    elif selectMode == 4:
+        pjName = input("削除したいpj名を入力 >> ")
+        for tList in pm.projects[pjName]:
+            print(tList)
+        delTaskIndex = int(input("削除したtask番号を入力 >> "))
+        pm.remove_task(pjName, delTaskIndex)
+
+    elif selectMode == 5:
+        break
+
+    pm.display_projects()
