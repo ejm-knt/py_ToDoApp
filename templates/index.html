@@ -7,16 +7,19 @@
 </head>
 <body>
     <h1>ToDoアプリ</h1>
+
     <form method="POST">
         <h2>プロジェクト追加/削除欄</h2>
+        <!--! pjに任意の名前をつけて追加するエリア -->
         <div>
-            <input type="text" />
-            <input type="submit" name="add" value="pjAdd" required>
+            <input type="text" name="newPjName">
+            <input type="submit" name="pjAdd" value="createPJ">
         </div>
 
+        <!--? 選択したpjを削除するエリア -->
         <div>
             <select name="pjList">
-                {% for pjL in projectList %}
+                {% for pjL in pjmDict.keys() %}
                     <option> {{ pjL }} </option>
                 {% endfor %}
             </select>
@@ -25,22 +28,26 @@
     </form>
 
     <h2>タスク追加</h2>
-    {% for i in range(count) %}
-    <span>
+
+    <!--! タスクを追加するエリア  -->
+    {% for pjm in pjmDict %}
+    <span id = " {{ list(pjm.projects.keys()) }}">
+        <h3>{{ list(pjm.projects.key()) }}</h3>
         <form method="POST">
-            <input type="text" name="task" required>
+            <input type="text" name="{{ list(pjm.projects.keys()) }}taskAdd" required>
+            <input type="date">
             <input type="submit" value="追加">
         </form>
 
-        <table border="1" id = "{{i}}">
+        <table border="1" id = "{{ list(pjm.projects.keys()) }}">
             <tr>
                 <th>タスク</th>
                 <th>日付</th>
             </tr>
             {% for task in tasks %}
                 <tr>
-                    <td>{{ task.content }}</td>
-                    <td>{{ task.date }}</td>
+                    <td>{{ pjm.value.content }}</td>
+                    <td>{{ pjm.value.date }}</td>
                 </tr>
             {% endfor %}
         </table>
