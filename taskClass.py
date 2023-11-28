@@ -30,7 +30,6 @@ class Task:
             return 0
         else:    
             return ceil(delta_in_minutes / (24 * 60))  # 分を日数に変換
-        
 
     def statusChange(self, taskStatus):
         """Statusは下記を格納すること\n
@@ -44,7 +43,7 @@ class Task:
             return f"無効なstatus: {taskStatus}. 次のいずれかを使用してください: {statusesList}"
         else:
             self.taskStatus = taskStatus
-        
+
     def addComment(self, comment):
         """コメント追加機能。ナンバリングが変わらず更新し続ける"""
         taskCount = 0  #* 使用されていない最小の番号を見つける

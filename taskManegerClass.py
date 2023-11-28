@@ -37,3 +37,4 @@ class ProjectManager:
     def display_projects(self):
         for project, tasks in self.projects.items():
             print(f"{project}: {tasks}")
+
