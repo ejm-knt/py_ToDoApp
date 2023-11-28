@@ -9,18 +9,18 @@
     <h1>ToDoリスト</h1>
 
     <h2>pj追加/削除欄</h2>
-    
+
     <!--! pj新規追加欄  -->
     <form method="POST">
         <span>新規プロジェクト名：</span>
-        <input type="text" name="PjAdd">
+        <input type="text" name="pjAdd" required>
         <input type="submit" name="pjAddButton" value="pj追加">
     </form>
-    
+
     <!--! 既存pj削除欄  -->
     <form method="POST">
         <span>削除プロジェクト名：</span>
-        <select name="pjRemove">
+        <select name="pjRemove" required>
             {% for i in pjmDict %}
                 <option> {{ i }} </option>
             {% endfor %}
@@ -29,21 +29,41 @@
     </form>
 
     <h2>task追加/削除欄</h2>
-    <!--! task新規追加欄  -->
-    <form method="POST">
-        <span>追加タスク内容：</span><input type="text" name="contents"><br>
-        <span>期日：</span><input type="text" name="deadLine"><br>
-        <span>担当者：</span><input type="text" name="maneger"><br>
-        <input type="submit" name="taskAddButton" value="task追加"><br>
-    </form>
-
-    <br>
-
-    <!--! 既存task削除欄  -->
-    <form method="POST">
-        <span>削除するtask番号：</span><input type="number" name="taskListNum" pattern="^[0-9]+$">
-        <input type="submit" name="taskAddButton" value="task削除">
-    </form>
     
+        {% for pjmk, tasks in pjmDict.items() %}
+        <!--! task新規追加欄  -->
+        <span name="{{ pjmk }}">
+        <form method="POST">
+            <span>追加タスク内容：</span><input type="text" name="contents" required><br>
+            <span>期日：</span><input type="text" name="deadLine" required><br>
+            <span>担当者：</span><input type="text" name="maneger" required><br>
+            <input type="submit" name="taskAddButton" value="task追加" required><br>
+        </form>
+        </span>
+
+        <br>
+
+        <!--! 既存task削除欄  -->
+        <form method="POST">
+            <span>削除するtask番号：</span><input type="number" name="taskListNum" pattern="^[0-9]+$">
+            <input type="submit" name="taskAddButton" value="task削除">
+        </form>
+
+        <table border="1" id = "{{ pjmk }}">
+            <tr>
+                <th>タスク</th>
+                <th>期日</th>
+                <th>残日数</th>
+                <th>担当者</th>
+                <th>状態</th>
+            </tr>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.content }}</td>
+                    <td>{{ task.date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endfor %}
 </body>
 </html>
